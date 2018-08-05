@@ -26,7 +26,7 @@ Nodo* Nodo::getSiguiente()
 
 int Nodo::getIndice()
 {
-	return info;
+	return indice;
 }
 
 
@@ -42,5 +42,5 @@ void Nodo::setSiguiente(Nodo* newSig)
 
 void Nodo::setIndice(int newIndice)
 {
-	newIndice = indice;
+	indice = newIndice;
 }

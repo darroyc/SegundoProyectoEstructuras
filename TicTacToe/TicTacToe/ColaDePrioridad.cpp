@@ -5,7 +5,7 @@ ColaDePrioridad::ColaDePrioridad(){
 }
 
 ColaDePrioridad::ColaDePrioridad(int cantidad) {
-	cabeza = new Nodo();
+	crearNodos(cantidad);
 }
 
 ColaDePrioridad::~ColaDePrioridad(){
@@ -19,29 +19,29 @@ void ColaDePrioridad::setCabeza(Nodo* newCabeza){
 	cabeza = newCabeza;
 }
 
-void ColaDePrioridad::insertarAlInicio(int indice){
+void ColaDePrioridad::insertar(int indice) {
 	Nodo* nuevo = new Nodo(indice);
-	if (colaVacia()) {
-		cabeza = nuevo;
-	}
-	else {
-		nuevo->setSiguiente(cabeza);
+	if (estaVacia()) {
 		setCabeza(nuevo);
 	}
-
+	else {
+		Nodo* aux = getCabeza();
+		while (aux->getSiguiente() != NULL) {
+			aux = aux->getSiguiente();
+		}
+		aux->setSiguiente(nuevo);
+	}
 }
 
 void ColaDePrioridad::crearNodos(int cantidad) {
-	if(cantidad != 0){
-		insertarAlInicio(cantidad - 1);
-		crearNodos(cantidad - 1);
+	for (int i = 0; i < cantidad; i++) {
+		insertar(i);
 	}
 }
 
 string ColaDePrioridad::mostrar()
 {
-
-	if (colaVacia()) {
+	if (estaVacia()) {
 		return "Esta vacia";
 	}
 
@@ -56,7 +56,7 @@ string ColaDePrioridad::mostrar()
 
 Nodo* ColaDePrioridad::buscar(int indice)
 {
-	if (!colaVacia()) {
+	if (!estaVacia()) {
 		Nodo* aux = this->getCabeza();
 		while (aux != NULL) {
 			if (aux->getIndice() == indice)
@@ -68,7 +68,7 @@ Nodo* ColaDePrioridad::buscar(int indice)
 	return NULL;
 }
 
-bool ColaDePrioridad::colaVacia()
+bool ColaDePrioridad::estaVacia()
 {
 	if (getCabeza() == NULL) {
 		return true;
@@ -80,5 +80,39 @@ void ColaDePrioridad::insertarDatoEnIndice(int indice, int info) {
 	Nodo* nodo = buscar(indice);
 	if (nodo != NULL) {
 		nodo->setInfo(info);
+	}
+}
+
+bool ColaDePrioridad::estaLlena()
+{
+	bool flag = true;
+	for (int i = 0; i < retornarLargo(); i++) {
+		if (buscar(i)->getInfo() == 0) {
+			flag = false;
+		}
+	}
+	return flag;
+}
+
+int ColaDePrioridad::retornarLargo()
+{
+	if (!estaVacia()) {
+		Nodo* aux = this->getCabeza();
+		while (aux != NULL) {
+			if (aux->getSiguiente() == NULL)
+				return aux->getIndice()+1;
+			else
+				aux = aux->getSiguiente();
+		}
+	}
+	return 0;
+}
+
+void ColaDePrioridad::vaciar()
+{
+	if (!estaVacia()) {
+		for (int i = 0; i < retornarLargo(); i++) {
+			insertarDatoEnIndice(i, NULL);
+		}
 	}
 }

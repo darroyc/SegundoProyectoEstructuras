@@ -1,5 +1,5 @@
-#ifndef Lista_h
-#define Lista_h
+#ifndef ColaDePrioridad_h
+#define ColaDePrioridad_h
 
 #include <iostream>
 #include <string>
@@ -25,14 +25,17 @@ public:
 	Nodo* buscar(int);
 	void crearNodos(int);
 	void insertarDatoEnIndice(int, int info);
+	bool estaVacia();
+	bool estaLlena();
+	int retornarLargo();
+	void vaciar();
 
 private:
 	// variable del miembro
 
 	Nodo* cabeza;
 
-	bool colaVacia();
-	void insertarAlInicio(int);
+	void insertar(int);
 };
 
 

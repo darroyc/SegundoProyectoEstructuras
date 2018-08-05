@@ -27,12 +27,16 @@ public:
 	void mostrarMovimientos(int);
 	string retornarTablero();
 	bool verificarSiHayGanador();
+	bool verificarSiTableroEstaLleno();
+	void reiniciarTablero();
 
 private:
 	// variable del miembro
 	ColaDePrioridad* tablero;
 	ColaDePrioridad* marcador;
 	void guardarSesion();
+	void inicializarMarcador();
+	string replaceChar(string str, char ch1, char ch2);
 };
 
 #endif Gestor_h
