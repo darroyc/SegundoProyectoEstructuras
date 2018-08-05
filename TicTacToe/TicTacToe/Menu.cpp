@@ -89,10 +89,9 @@ void Menu::empezarJuego()
 		cambiarJugadorActual();
 		print("Turno de "+getJugadorActual()+" ("+getMarca()+")\n");
 		mostrarMenuDeJugadas();
-		cin >> option;
-		getGestor()->realizarMovimiento(option - 1, getNumeroJugador());
+		efectuarMovimiento();
 		if (gestor->verificarSiHayGanador()) {
-			gestor->actualizarMarcador(getNumeroJugador()-1);
+			gestor->actualizarMarcador(getNumeroJugador());
 			verEstadoActual();
 			print("\nFelicidades " + getJugadorActual() + ", has ganado!\n");
 			option = continuar();
@@ -111,7 +110,7 @@ void Menu::empezarJuego()
 
 void Menu::mostrarPuntaje()
 {
-	print("| " + getJugador1() + " | " +getJugador2()+ " | Empates |\n" + getGestor()->retornarMarcador() +"\n");
+	print("| " + getJugador1() + " | " +getJugador2()+ " | Empates |\n" + getGestor()->retornarMarcador());
 }
 
 void Menu::mostrarMenuDeJugadas()
@@ -123,10 +122,45 @@ int Menu::continuar()
 {
 	int option;
 	print("Desean jugar otra partida? 1. Si. 2. No\n");
-	cin >> option;
-	option = option - 2;
+	option = leerOpcion(2) - 2;
 	getGestor()->reiniciarTablero();
 	return option;
+}
+
+void Menu::efectuarMovimiento()
+{	
+	int option = leerOpcion(9);
+	if (getGestor()->verificarSiCeldaEstaVacia(option)) {
+		getGestor()->realizarMovimiento(option, getNumeroJugador());
+	}
+	else {
+		print("La celda elejida ya se encuentra llena. Por favor elija otra.\n");
+		efectuarMovimiento();
+	}
+}
+
+int Menu::leerOpcion(int max)
+{
+	int opcion, cont = 0;
+	bool continuar;
+
+	do {
+		continuar = false;
+		cin.clear();
+		if (cont > 0) cin.ignore(1024, '\n');
+		cin >> opcion;
+		cont++;
+		if (cin.fail() && cin.rdstate()) {
+			print("La opcion selecionada no es numeral. Intente de nuevo.\n");
+			continuar = true;
+		}
+		if (opcion == 0 || opcion > max) {
+			print("La opcion selecionada no esta dentro de las mostradas. Intente de nuevo.\n");
+			continuar = true;
+		}
+	} while (continuar);
+
+	return opcion;
 }
 
 void Menu::print(string msg)

@@ -47,6 +47,8 @@ private:
 	void mostrarPuntaje();
 	void mostrarMenuDeJugadas();
 	int continuar();
+	void efectuarMovimiento();
+	int leerOpcion(int);
 };
 
 #endif Menu_h

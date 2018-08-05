@@ -29,6 +29,7 @@ public:
 	bool verificarSiHayGanador();
 	bool verificarSiTableroEstaLleno();
 	void reiniciarTablero();
+	bool verificarSiCeldaEstaVacia(int);
 
 private:
 	// variable del miembro
