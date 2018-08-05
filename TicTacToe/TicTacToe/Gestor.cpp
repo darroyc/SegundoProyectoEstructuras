@@ -30,27 +30,28 @@ void Gestor::setTablero(ColaDePrioridad* colaDePrioridad)
 
 void Gestor::actualizarMarcador(int indice)
 {
-	marcador->insertarDatoEnIndice(indice, marcador->buscar(indice)->getInfo() + 1);
+	getMarcador()->insertarDatoEnIndice(indice, getMarcador()->buscar(indice)->getInfo() + 1);
 }
 
-string Gestor::mostrarMarcador()
+string Gestor::retornarMarcador()
 {
-	return "| Jugador 1 | Empates | Jugador 2\n" 
-		+ marcador->buscar(0)->getInfo() + '   ' + marcador->buscar(1)->getInfo() + '   ' + marcador->buscar(2)->getInfo();
+	return to_string(getMarcador()->buscar(0)->getInfo()) + "   " 
+		+ to_string(getMarcador()->buscar(1)->getInfo()) + "   "
+		+ to_string(getMarcador()->buscar(2)->getInfo()) + "\n\n";
 }
 
-void Gestor::realizarMovimiento(int indice, int marca)
+void Gestor::realizarMovimiento(int indice, int jugador)
 {
-	tablero->buscar(indice)->setInfo(marca);
+	getTablero()->buscar(indice)->setInfo(jugador);
 }
 
 void Gestor::mostrarMovimientos(int)
 {
 }
 
-string Gestor::mostrarTablero()
+string Gestor::retornarTablero()
 {
-	string output = "Player 1 (X)  -  Player 2 (O)\n\n     |     |     \n  "
+	string output = "     |     |     \n  "
 		+ to_string(tablero->buscar(0)->getInfo()) 
 		+ "  |  " + to_string(tablero->buscar(1)->getInfo()) 
 		+ "  |  " + to_string(tablero->buscar(2)->getInfo()) + "\n"
@@ -67,10 +68,15 @@ string Gestor::mostrarTablero()
 		+ to_string(tablero->buscar(8)->getInfo()) + "\n"
 		+ "     |     |     \n";
 
-	output = output.replace(output.begin()+35, output.end(), '0', 'X');
-	output = output.replace(output.begin()+35, output.end(), '1', 'O');
+	output = output.replace(output.begin()+35, output.end(), '1', 'X');
+	output = output.replace(output.begin()+35, output.end(), '2', 'O');
 	
 	return output;
+}
+
+bool Gestor::verificarSiHayGanador()
+{ 
+	return false;
 }
 
 void Gestor::guardarSesion()

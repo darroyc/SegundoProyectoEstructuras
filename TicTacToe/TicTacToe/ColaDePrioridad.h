@@ -36,4 +36,4 @@ private:
 };
 
 
-#endif /*Lista_h*/
+#endif ColaDePrioridad_h

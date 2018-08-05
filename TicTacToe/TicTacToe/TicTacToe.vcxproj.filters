@@ -27,6 +27,9 @@
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColaDePrioridad.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

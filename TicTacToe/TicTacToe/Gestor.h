@@ -22,10 +22,11 @@ public:
 	void setMarcador(ColaDePrioridad*);
 	void setTablero(ColaDePrioridad*);
 	void actualizarMarcador(int);
-	string mostrarMarcador();
+	string retornarMarcador();
 	void realizarMovimiento(int, int);
 	void mostrarMovimientos(int);
-	string mostrarTablero();
+	string retornarTablero();
+	bool verificarSiHayGanador();
 
 private:
 	// variable del miembro
@@ -34,4 +35,4 @@ private:
 	void guardarSesion();
 };
 
-#endif Nodo_h
+#endif Gestor_h
