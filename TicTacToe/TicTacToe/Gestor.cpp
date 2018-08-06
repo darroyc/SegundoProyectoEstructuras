@@ -54,22 +54,22 @@ void Gestor::mostrarMovimientos(int)
 
 string Gestor::retornarTablero()
 {
-	string output = "             █     █     \n          "
+	string output = "             |     |     \n          "
 		+ to_string(getTablero()->buscar(0)->getInfo()) 
-		+ "  █  " + to_string(getTablero()->buscar(1)->getInfo())
-		+ "  █  " + to_string(getTablero()->buscar(2)->getInfo()) + "\n"
-		+ "        _____█_____█_____\n"
-		+ "             █     █     \n"
+		+ "  |  " + to_string(getTablero()->buscar(1)->getInfo())
+		+ "  |  " + to_string(getTablero()->buscar(2)->getInfo()) + "\n"
+		+ "        _____|_____|_____\n"
+		+ "             |     |     \n"
 		+ "          " + to_string(getTablero()->buscar(3)->getInfo())
-		+ "  █  " + to_string(getTablero()->buscar(4)->getInfo())
-		+ "  █  " + to_string(getTablero()->buscar(5)->getInfo()) + "\n"
-		+ "        _____█_____█_____\n"
-		+ "             █     █     \n"
+		+ "  |  " + to_string(getTablero()->buscar(4)->getInfo())
+		+ "  |  " + to_string(getTablero()->buscar(5)->getInfo()) + "\n"
+		+ "        _____|_____|_____\n"
+		+ "             |     |     \n"
 		+ "          " + to_string(getTablero()->buscar(6)->getInfo())
-		+ "  █  " + to_string(getTablero()->buscar(7)->getInfo())
-		+ "  █  " 
+		+ "  |  " + to_string(getTablero()->buscar(7)->getInfo())
+		+ "  |  " 
 		+ to_string(getTablero()->buscar(8)->getInfo()) + "\n"
-		+ "             █     █     \n\n\n";
+		+ "             |     |     \n\n\n";
 
 	output = replaceChar(output, '1', 'X');
 	output = replaceChar(output, '2', 'O');
