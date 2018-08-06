@@ -22,7 +22,7 @@ public:
 	void setMarcador(ColaDePrioridad*);
 	void setTablero(ColaDePrioridad*);
 	void actualizarMarcador(int);
-	string retornarMarcador();
+	int retornarIndiceMarcador(int);
 	void realizarMovimiento(int, int);
 	void mostrarMovimientos(int);
 	string retornarTablero();
@@ -30,6 +30,7 @@ public:
 	bool verificarSiTableroEstaLleno();
 	void reiniciarTablero();
 	bool verificarSiCeldaEstaVacia(int);
+	void actualizarRecords(string, string);
 
 private:
 	// variable del miembro
@@ -38,6 +39,7 @@ private:
 	void guardarSesion();
 	void inicializarMarcador();
 	string replaceChar(string str, char ch1, char ch2);
+	bool reemplazarRecord(string&, string&, int);
 };
 
 #endif Gestor_h

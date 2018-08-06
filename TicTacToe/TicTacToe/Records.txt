@@ -1,0 +1,6 @@
+Partidas ganadas por jugador
+ 
+Daniel [3]
+Ivan [2]
+Nathalia [1]
+Silvia [1]

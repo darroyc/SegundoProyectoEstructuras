@@ -77,14 +77,14 @@ void Menu::seleccionarJugadores()
 	cout << "Ingrese el nombre del segundo jugador\n";
 	getline(cin, nombre);
 	setJugador2(nombre);
-	print("Bienvenid@s " + jugador1 + " y " + jugador2 + ".\n");
+	print("\nBienvenid@s " + jugador1 + " y " + jugador2 + ".\n");
 }
 
 void Menu::empezarJuego()
 {
 	int option = 1;
-	mostrarPuntaje();
 	do {
+		mostrarMarcador();
 		verEstadoActual();
 		cambiarJugadorActual();
 		print("Turno de "+getJugadorActual()+" ("+getMarca()+")\n");
@@ -105,12 +105,13 @@ void Menu::empezarJuego()
 
 	} while (option != 0);
 
+	getGestor()->actualizarRecords(getJugador1(), getJugador2());
 	print("Gracias por jugar");
 }
 
-void Menu::mostrarPuntaje()
+void Menu::mostrarMarcador()
 {
-	print("| " + getJugador1() + " | " +getJugador2()+ " | Empates |\n" + getGestor()->retornarMarcador());
+	print("\n| " + getJugador1() + ": "+ to_string(getGestor()->retornarIndiceMarcador(0)) +" | " +getJugador2() + ": " + to_string(getGestor()->retornarIndiceMarcador(1))+ " | Empates: " + to_string(getGestor()->retornarIndiceMarcador(2))+ " |\n\n");
 }
 
 void Menu::mostrarMenuDeJugadas()
@@ -134,7 +135,7 @@ void Menu::efectuarMovimiento()
 		getGestor()->realizarMovimiento(option, getNumeroJugador());
 	}
 	else {
-		print("La celda elejida ya se encuentra llena. Por favor elija otra.\n");
+		print("La celda elegida ya se encuentra llena. Por favor elija otra.\n");
 		efectuarMovimiento();
 	}
 }

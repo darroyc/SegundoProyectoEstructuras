@@ -44,7 +44,7 @@ private:
 	void print(string);
 	void verEstadoActual();
 	void cambiarJugadorActual();
-	void mostrarPuntaje();
+	void mostrarMarcador();
 	void mostrarMenuDeJugadas();
 	int continuar();
 	void efectuarMovimiento();
