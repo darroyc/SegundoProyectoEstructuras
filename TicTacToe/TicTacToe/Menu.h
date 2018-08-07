@@ -29,6 +29,7 @@ public:
 	int getNumeroJugador();
 	void setMarca(char);
 	char getMarca();
+	void verMenuDeIncio();
 	void seleccionarJugadores();
 	void empezarJuego();
 

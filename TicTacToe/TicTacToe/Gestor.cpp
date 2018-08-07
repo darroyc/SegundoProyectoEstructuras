@@ -1,11 +1,9 @@
 ﻿#include "Gestor.h"
-#include <stdlib.h>
-#include <fstream>
-#include <iostream>
 
 Gestor::Gestor() {
 	setTablero(new ColaDePrioridad(9));
 	setMarcador(new ColaDePrioridad(3));
+	setTxtWriter(new TxtWriter("Records.txt"));
 	inicializarMarcador();
 }
 
@@ -22,6 +20,11 @@ ColaDePrioridad* Gestor::getMarcador()
 	return marcador;
 }
 
+TxtWriter * Gestor::getTxtWriter()
+{
+	return txtWriter;
+}
+
 void Gestor::setMarcador(ColaDePrioridad* colaDePrioridad)
 {
 	marcador = colaDePrioridad;
@@ -30,6 +33,11 @@ void Gestor::setMarcador(ColaDePrioridad* colaDePrioridad)
 void Gestor::setTablero(ColaDePrioridad* colaDePrioridad)
 {
 	tablero = colaDePrioridad;
+}
+
+void Gestor::setTxtWriter(TxtWriter * newTxtWriter)
+{
+	txtWriter = newTxtWriter;
 }
 
 void Gestor::actualizarMarcador(int index)
@@ -150,31 +158,11 @@ string Gestor::replaceChar(string str, char ch1, char ch2) {
 
 void Gestor::actualizarRecords(string jugador1, string jugador2)
 {
-	string contenido = "";
-	string linea;
-	int nuevoNumero;
-	ifstream myfile("Records.txt");
-	if (myfile.is_open())
-	{
-		while (getline(myfile, linea))
-		{
-			if (contenido != "") {
-				contenido = contenido + "\n" + linea;
-			}
-			else {
-				contenido = linea;
-			}
-		}
-		myfile.close();
-	}
+	string contenido = readRecordsFile();
+	getTxtWriter()->deleteFile();
 
-	else cout << "Unable to open file";
-
-	if (remove("Records.txt") != 0) {
-		perror("Error deleting file");
-	}
-	else {
-	puts("File successfully deleted");
+	if (contenido == "") {
+		contenido = "Partidas ganadas por jugador\n";
 	}
 
 	if (!reemplazarRecord(contenido, jugador1, retornarIndiceMarcador(0))){
@@ -185,13 +173,12 @@ void Gestor::actualizarRecords(string jugador1, string jugador2)
 		contenido = contenido + "\n" + jugador2 + " [" + to_string(retornarIndiceMarcador(1)) + "]";
 	}
 
-	ofstream ofile("Records.txt");
-	if (ofile.is_open())
-	{
-		ofile << contenido;
-		ofile.close();
-	}
-	else cout << "Unable to open file";
+	getTxtWriter()->writeFile(contenido);
+}
+
+string Gestor::readRecordsFile()
+{
+	return getTxtWriter()->readFile();
 }
 
 bool Gestor::reemplazarRecord(string &contenido, string &jugador, int cantidadGanadas)

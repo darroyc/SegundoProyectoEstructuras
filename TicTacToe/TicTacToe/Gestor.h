@@ -5,6 +5,7 @@
 #include <string>
 
 #include "ColaDePrioridad.h"
+#include "TxtWriter.h"
 
 using namespace std;
 
@@ -17,10 +18,6 @@ public:
 	~Gestor();
 
 	// accessor functions
-	ColaDePrioridad* getTablero();
-	ColaDePrioridad* getMarcador();
-	void setMarcador(ColaDePrioridad*);
-	void setTablero(ColaDePrioridad*);
 	void actualizarMarcador(int);
 	int retornarIndiceMarcador(int);
 	void realizarMovimiento(int, int);
@@ -31,11 +28,19 @@ public:
 	void reiniciarTablero();
 	bool verificarSiCeldaEstaVacia(int);
 	void actualizarRecords(string, string);
+	string readRecordsFile();
 
 private:
 	// variable del miembro
+	ColaDePrioridad * getTablero();
+	ColaDePrioridad* getMarcador();
+	TxtWriter* getTxtWriter();
+	void setMarcador(ColaDePrioridad*);
+	void setTablero(ColaDePrioridad*);
+	void setTxtWriter(TxtWriter*);
 	ColaDePrioridad* tablero;
 	ColaDePrioridad* marcador;
+	TxtWriter* txtWriter;
 	void guardarSesion();
 	void inicializarMarcador();
 	string replaceChar(string str, char ch1, char ch2);

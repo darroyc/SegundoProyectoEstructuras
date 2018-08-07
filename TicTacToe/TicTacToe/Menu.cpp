@@ -67,10 +67,25 @@ char Menu::getMarca()
 	return marca;
 }
 
+
+void Menu::verMenuDeIncio()
+{
+	print("Ha inicializado Tic Tac Toe. Que desea hacer?\n1.Ver Records Historicos\n2.Jugar\n");
+	int opcion = leerOpcion(2);
+	if (opcion == 1) {
+		print("\n" + getGestor()->readRecordsFile());
+		print("\n\nQue desea hacer?\n1.Jugar\n2.Salir\n");
+		opcion = leerOpcion(2);
+		if (opcion == 2) {
+			exit(0);
+		}
+	}
+}
+
 void Menu::seleccionarJugadores()
 {
 	string nombre;
-	cout << "Ingrese el nombre del primer jugador\n";
+	cout << "\nIngrese el nombre del primer jugador\n";
 	getline(cin, nombre);
 	setJugador1(nombre);
 
@@ -94,12 +109,14 @@ void Menu::empezarJuego()
 			gestor->actualizarMarcador(getNumeroJugador());
 			verEstadoActual();
 			print("\nFelicidades " + getJugadorActual() + ", has ganado!\n");
+			mostrarMarcador();
 			option = continuar();
 		}
 		else if (gestor->verificarSiTableroEstaLleno()) {
 			verEstadoActual();
 			print("\nLa partida ha terminado en un empate\n");
-			gestor->actualizarMarcador(2);
+			gestor->actualizarMarcador(3);
+			mostrarMarcador();
 			option = continuar();
 		}
 
@@ -160,6 +177,7 @@ int Menu::leerOpcion(int max)
 			continuar = true;
 		}
 	} while (continuar);
+	cin.get();
 
 	return opcion;
 }

@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\ColaDePrioridad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TxtWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\ColaDePrioridad.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Nodo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TxtWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

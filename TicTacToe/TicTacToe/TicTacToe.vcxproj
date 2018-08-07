@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.cpp" />
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.cpp" />
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Nodo.cpp" />
+    <ClCompile Include="TxtWriter.cpp" />
     <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.h" />
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.h" />
     <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Nodo.h" />
+    <ClInclude Include="TxtWriter.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
