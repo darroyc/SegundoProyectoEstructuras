@@ -1,4 +1,7 @@
 #include "Menu.h"
+#include <algorithm>
+#include <string> 
+#include <cctype>
 
 Menu::Menu() {
 	setGestor(new Gestor());
@@ -19,6 +22,8 @@ Gestor* Menu::getGestor()
 
 void Menu::setJugador1(string nombre)
 {
+	std::transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+	nombre[0] = toupper(nombre[0]);
 	jugador1 = nombre;
 }
 
@@ -29,6 +34,8 @@ string Menu::getJugador1()
 
 void Menu::setJugador2(string nombre)
 {
+	std::transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+	nombre[0] = toupper(nombre[0]);
 	jugador2 = nombre;
 }
 

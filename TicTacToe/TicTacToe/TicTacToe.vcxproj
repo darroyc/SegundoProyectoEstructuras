@@ -19,18 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\ColaDePrioridad.cpp" />
-    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.cpp" />
-    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.cpp" />
-    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Nodo.cpp" />
+    <ClCompile Include="ColaDePrioridad.cpp" />
+    <ClCompile Include="Gestor.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="TxtWriter.cpp" />
-    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\TicTacToe.cpp" />
+    <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\ColaDePrioridad.h" />
-    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Gestor.h" />
-    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Menu.h" />
-    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\Nodo.h" />
+    <ClInclude Include="ColaDePrioridad.h" />
+    <ClInclude Include="Gestor.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="TxtWriter.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
