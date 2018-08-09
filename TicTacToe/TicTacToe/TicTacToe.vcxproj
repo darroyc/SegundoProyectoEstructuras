@@ -33,6 +33,9 @@
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="TxtWriter.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Records.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{990BD95A-1DC5-4B46-9296-02C04C2E9B39}</ProjectGuid>
