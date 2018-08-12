@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "Nodo.h"
+#include "NodoCola.h"
 using namespace std;
 
 class ColaDePrioridad {
@@ -17,12 +17,12 @@ public:
 	~ColaDePrioridad();
 
 	// accessor functions
-	Nodo* getCabeza();
-	void setCabeza(Nodo* newCabeza);
+	NodoCola* getCabeza();
+	void setCabeza(NodoCola* newCabeza);
 
 	//Fucntions
 	string mostrar();
-	Nodo* buscar(int);
+	NodoCola* buscar(int);
 	void crearNodos(int);
 	void insertarDatoEnIndice(int, int info);
 	bool estaVacia();
@@ -33,7 +33,7 @@ public:
 private:
 	// variable del miembro
 
-	Nodo* cabeza;
+	NodoCola* cabeza;
 
 	void insertar(int);
 };

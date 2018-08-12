@@ -21,9 +21,6 @@
     <ClCompile Include="TicTacToe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Nodo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -31,6 +28,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ColaDePrioridad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoCola.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\NodoPila.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PilaPartida.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +53,13 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Nodo.h">
+    <ClInclude Include="NodoCola.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Danny%27s\Documents\SegundoProyectoEstructuras\TicTacToe\TicTacToe\NodoPila.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PilaPartida.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

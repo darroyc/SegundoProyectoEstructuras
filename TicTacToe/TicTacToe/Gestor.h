@@ -6,6 +6,7 @@
 
 #include "ColaDePrioridad.h"
 #include "TxtWriter.h"
+#include "PilaPartida.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
 	void actualizarMarcador(int);
 	int retornarIndiceMarcador(int);
 	void realizarMovimiento(int, int);
-	void mostrarMovimientos(int);
+	string mostrarMovimientoPrevio();
 	string retornarTablero();
 	bool verificarSiHayGanador();
 	bool verificarSiTableroEstaLleno();
@@ -29,22 +30,26 @@ public:
 	bool verificarSiCeldaEstaVacia(int);
 	void actualizarRecords(string, string);
 	string readRecordsFile();
+	void reiniciarPila();
+	void guardarMovimiento(string);
 
 private:
 	// variable del miembro
-	ColaDePrioridad * getTablero();
+	ColaDePrioridad* getTablero();
 	ColaDePrioridad* getMarcador();
 	TxtWriter* getTxtWriter();
 	void setMarcador(ColaDePrioridad*);
 	void setTablero(ColaDePrioridad*);
+	void setPartida(PilaPartida*);
+	PilaPartida* getPartida();
 	void setTxtWriter(TxtWriter*);
 	ColaDePrioridad* tablero;
 	ColaDePrioridad* marcador;
 	TxtWriter* txtWriter;
-	void guardarSesion();
 	void inicializarMarcador();
 	string replaceChar(string str, char ch1, char ch2);
 	bool reemplazarRecord(string&, string&, int);
+	PilaPartida* partida;
 };
 
 #endif Gestor_h

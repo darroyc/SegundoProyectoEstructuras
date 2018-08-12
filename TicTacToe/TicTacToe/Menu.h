@@ -31,7 +31,8 @@ public:
 	char getMarca();
 	void verMenuDeIncio();
 	void seleccionarJugadores();
-	void empezarJuego();
+	void empezarPartida();
+	void start();
 
 
 private:
@@ -43,13 +44,14 @@ private:
 	char marca;
 	Gestor* gestor;
 	void print(string);
-	void verEstadoActual();
+	void verEstadoActual(bool);
 	void cambiarJugadorActual();
 	void mostrarMarcador();
 	void mostrarMenuDeJugadas();
 	int continuar();
 	void efectuarMovimiento();
 	int leerOpcion(int);
+	void mostrarMovimientosAnteriores();
 };
 
 #endif Menu_h

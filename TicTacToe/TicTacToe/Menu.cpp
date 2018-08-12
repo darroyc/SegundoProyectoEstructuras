@@ -77,9 +77,9 @@ char Menu::getMarca()
 
 void Menu::verMenuDeIncio()
 {
-	print("Ha inicializado Tic Tac Toe. Que desea hacer?\n1.Ver Records Historicos\n2.Jugar\n");
+	print("Ha iniciado Tic Tac Toe. Que desea hacer?\n1.Jugar\n2.Ver Records Historicos\n");
 	int opcion = leerOpcion(2);
-	if (opcion == 1) {
+	if (opcion == 2) {
 		print("\n" + getGestor()->readRecordsFile());
 		print("\n\nQue desea hacer?\n1.Jugar\n2.Salir\n");
 		opcion = leerOpcion(2);
@@ -99,38 +99,52 @@ void Menu::seleccionarJugadores()
 	cout << "Ingrese el nombre del segundo jugador\n";
 	getline(cin, nombre);
 	setJugador2(nombre);
-	print("\nBienvenid@s " + jugador1 + " y " + jugador2 + ".\n");
+	print("\nBienvenid@s " + getJugador1() + " y " + getJugador2() + ".\n");
 }
 
-void Menu::empezarJuego()
+void Menu::empezarPartida()
 {
 	int option = 1;
 	do {
 		mostrarMarcador();
-		verEstadoActual();
+		verEstadoActual(true);
 		cambiarJugadorActual();
 		print("Turno de "+getJugadorActual()+" ("+getMarca()+")\n");
 		mostrarMenuDeJugadas();
 		efectuarMovimiento();
 		if (gestor->verificarSiHayGanador()) {
 			gestor->actualizarMarcador(getNumeroJugador());
-			verEstadoActual();
 			print("\nFelicidades " + getJugadorActual() + ", has ganado!\n");
 			mostrarMarcador();
+			mostrarMovimientosAnteriores();
 			option = continuar();
 		}
 		else if (gestor->verificarSiTableroEstaLleno()) {
-			verEstadoActual();
-			print("\nLa partida ha terminado en un empate\n");
 			gestor->actualizarMarcador(3);
+			print("\nLa partida ha terminado en un empate\n");
 			mostrarMarcador();
+			mostrarMovimientosAnteriores();
 			option = continuar();
 		}
-
 	} while (option != 0);
 
 	getGestor()->actualizarRecords(getJugador1(), getJugador2());
-	print("Gracias por jugar");
+}
+
+void Menu::start()
+{
+	int option = 1;
+	do {
+		verMenuDeIncio();
+		seleccionarJugadores();
+		empezarPartida();
+
+		print("\nDesean jugar otra partida? 1. Si. 2. No\n");
+		option = leerOpcion(2) - 2;
+		setGestor(new Gestor());
+	} while (option != 0);
+	print("\nGracias por jugar\n");
+	cin.get();
 }
 
 void Menu::mostrarMarcador()
@@ -146,7 +160,7 @@ void Menu::mostrarMenuDeJugadas()
 int Menu::continuar()
 {
 	int option;
-	print("Desean jugar otra partida? 1. Si. 2. No\n");
+	print("\nDesean repetir partida? 1. Si. 2. No\n");
 	option = leerOpcion(2) - 2;
 	getGestor()->reiniciarTablero();
 	return option;
@@ -189,14 +203,32 @@ int Menu::leerOpcion(int max)
 	return opcion;
 }
 
+void Menu::mostrarMovimientosAnteriores()
+{
+	int opcion;
+	verEstadoActual(false);
+	do {
+		print("\nVer movimiento anterior? 1. Si. 2. No\n");
+		opcion = leerOpcion(2) - 2;
+		if (opcion != 0) {
+			print(getGestor()->mostrarMovimientoPrevio());
+		}
+	} while (opcion != 0);
+	getGestor()->reiniciarPila();
+}
+
 void Menu::print(string msg)
 {
 	cout << msg;
 }
 
-void Menu::verEstadoActual()
+void Menu::verEstadoActual(bool save)
 {
-	print(getGestor()->retornarTablero());
+	string output = getGestor()->retornarTablero();
+	if (save) {
+		getGestor()->guardarMovimiento(output);
+	}
+	print(output);
 }
 
 void Menu::cambiarJugadorActual()

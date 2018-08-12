@@ -5,6 +5,7 @@ Gestor::Gestor() {
 	setMarcador(new ColaDePrioridad(3));
 	setTxtWriter(new TxtWriter("Records.txt"));
 	inicializarMarcador();
+	setPartida(new PilaPartida());
 }
 
 Gestor::~Gestor() {
@@ -35,6 +36,16 @@ void Gestor::setTablero(ColaDePrioridad* colaDePrioridad)
 	tablero = colaDePrioridad;
 }
 
+void Gestor::setPartida(PilaPartida* pilaPartida)
+{
+	partida = pilaPartida;
+}
+
+PilaPartida * Gestor::getPartida()
+{
+	return partida;
+}
+
 void Gestor::setTxtWriter(TxtWriter * newTxtWriter)
 {
 	txtWriter = newTxtWriter;
@@ -56,8 +67,13 @@ void Gestor::realizarMovimiento(int indice, int jugador)
 	getTablero()->buscar(indice-1)->setInfo(jugador);
 }
 
-void Gestor::mostrarMovimientos(int)
+string Gestor::mostrarMovimientoPrevio()
 {
+	string output = getPartida()->pop();
+	if (output == "") {
+		return "\nNo hay jugadas previas.";
+	}
+	return output;
 }
 
 string Gestor::retornarTablero()
@@ -82,7 +98,7 @@ string Gestor::retornarTablero()
 	output = replaceChar(output, '1', 'X');
 	output = replaceChar(output, '2', 'O');
 	output = replaceChar(output, '0', ' ');
-	
+
 	return output;
 }
 
@@ -136,8 +152,9 @@ bool Gestor::verificarSiTableroEstaLleno()
 	return getTablero()->estaLlena();
 }
 
-void Gestor::guardarSesion()
+void Gestor::guardarMovimiento(string output)
 {
+	getPartida()->push(output);
 }
 
 void Gestor::inicializarMarcador()
@@ -179,6 +196,11 @@ void Gestor::actualizarRecords(string jugador1, string jugador2)
 string Gestor::readRecordsFile()
 {
 	return getTxtWriter()->readFile();
+}
+
+void Gestor::reiniciarPila()
+{
+	setPartida(new PilaPartida());
 }
 
 bool Gestor::reemplazarRecord(string &contenido, string &jugador, int cantidadGanadas)

@@ -11,21 +11,21 @@ ColaDePrioridad::ColaDePrioridad(int cantidad) {
 ColaDePrioridad::~ColaDePrioridad(){
 }
 
-Nodo * ColaDePrioridad::getCabeza(){
+NodoCola * ColaDePrioridad::getCabeza(){
 	return cabeza;
 }
 
-void ColaDePrioridad::setCabeza(Nodo* newCabeza){
+void ColaDePrioridad::setCabeza(NodoCola* newCabeza){
 	cabeza = newCabeza;
 }
 
 void ColaDePrioridad::insertar(int indice) {
-	Nodo* nuevo = new Nodo(indice);
+	NodoCola* nuevo = new NodoCola(indice);
 	if (estaVacia()) {
 		setCabeza(nuevo);
 	}
 	else {
-		Nodo* aux = getCabeza();
+		NodoCola* aux = getCabeza();
 		while (aux->getSiguiente() != NULL) {
 			aux = aux->getSiguiente();
 		}
@@ -45,7 +45,7 @@ string ColaDePrioridad::mostrar()
 		return "Esta vacia";
 	}
 
-	Nodo* aux = getCabeza();
+	NodoCola* aux = getCabeza();
 	string contenido;
 	while (aux!=NULL) {
 		contenido += to_string(aux->getInfo()) + " ";
@@ -54,10 +54,10 @@ string ColaDePrioridad::mostrar()
 	return contenido+"\n";
 }
 
-Nodo* ColaDePrioridad::buscar(int indice)
+NodoCola* ColaDePrioridad::buscar(int indice)
 {
 	if (!estaVacia()) {
-		Nodo* aux = this->getCabeza();
+		NodoCola* aux = this->getCabeza();
 		while (aux != NULL) {
 			if (aux->getIndice() == indice)
 				return aux;
@@ -77,7 +77,7 @@ bool ColaDePrioridad::estaVacia()
 }
 
 void ColaDePrioridad::insertarDatoEnIndice(int indice, int info) {
-	Nodo* nodo = buscar(indice);
+	NodoCola* nodo = buscar(indice);
 	if (nodo != NULL) {
 		nodo->setInfo(info);
 	}
@@ -97,7 +97,7 @@ bool ColaDePrioridad::estaLlena()
 int ColaDePrioridad::retornarLargo()
 {
 	if (!estaVacia()) {
-		Nodo* aux = this->getCabeza();
+		NodoCola* aux = this->getCabeza();
 		while (aux != NULL) {
 			if (aux->getSiguiente() == NULL)
 				return aux->getIndice()+1;

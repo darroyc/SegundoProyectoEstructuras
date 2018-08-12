@@ -65,7 +65,4 @@ void TxtWriter::deleteFile()
 	if (remove("Records.txt") != 0) {
 		perror("Error deleting file");
 	}
-	else {
-		puts("File successfully deleted");
-	}
 }

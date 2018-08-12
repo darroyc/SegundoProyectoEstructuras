@@ -1,33 +1,33 @@
-#ifndef Nodo_h
-#define Nodo_h
+#ifndef NodoCola_h
+#define NodoCola_h
 
 #include <iostream>
 #include <string>
 using namespace std;
 
-class Nodo {
+class NodoCola {
 public:
 	// default constructor
-	Nodo();
+	NodoCola();
 
-	Nodo(int);
+	NodoCola(int);
 
 	// destructor
-	~Nodo();
+	~NodoCola();
 
 	// accessor functions
 	int getInfo();
-	Nodo* getSiguiente();
+	NodoCola* getSiguiente();
 	int getIndice();
 	void setInfo(int);
-	void setSiguiente(Nodo*);
+	void setSiguiente(NodoCola*);
 	void setIndice(int);
 
 private:
 	// variable del miembro
 	int info;
-	Nodo* siguiente;
+	NodoCola* siguiente;
 	int indice;
 };
 
-#endif Nodo_h
+#endif NodoCola_h
